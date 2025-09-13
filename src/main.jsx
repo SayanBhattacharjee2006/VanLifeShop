@@ -5,7 +5,7 @@ import { BrowserRouter,Routes,Route } from 'react-router-dom'
 import Layout from './components/Layouts/Layout.jsx'
 import Home from './Pages/Home/Home.jsx'
 import About from './Pages/About/About.jsx'
-
+import "./server.js"
 function App(){
   return (
     <BrowserRouter>
