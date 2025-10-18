@@ -1,0 +1,5 @@
+  - Update outer div className to bg-amber-100 shadow-lg mb-[15px] py-[18px] pl-[24px] rounded-lg
+- Adjust container margins to px-[26px] instead of my-[30px] mx-[26px]
+- Update h3 className to text-[20px] font-semibold my-[10px] text-black
+- Update h4 className to my-[10px] text-gray-700
+- Ensure image and van-type styling fits the theme
