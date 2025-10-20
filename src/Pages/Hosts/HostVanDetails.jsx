@@ -1,20 +1,17 @@
 import React from "react";
-import { useParams,Link,NavLink } from "react-router-dom";
+import { useParams,Link,NavLink, useLoaderData } from "react-router-dom";
 import { Outlet } from "react-router-dom";
+import {getHostVans} from "../../../Api";
+
+export function loader({params}){
+  return getHostVans(params.id);
+}
+
+
 export default function HostVanDetail() {
-  const { id } = useParams();
-  const [currentVan, setCurrentVan] = React.useState(null);
 
-  React.useEffect(() => {
-    fetch(`/api/host/vans/${id}`)
-      .then((res) => res.json())
-      .then((data) => setCurrentVan(data.vans[0]))
-      .catch((error) => console.error(error));
-  }, []);
+  const currentVan = useLoaderData();
 
-  if (!currentVan) {
-    return <h1>Loading...</h1>;
-  }
 
   return (
     <section>
