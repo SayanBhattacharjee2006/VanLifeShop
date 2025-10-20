@@ -1,18 +1,33 @@
 import React from "react";
-import { useParams } from "react-router";
+import { useParams, useLocation } from "react-router";
 import { useEffect,useState } from "react";
+import { Link } from "react-router-dom";
+
 
 function VanDetails() {
     const params = useParams();
     const [van, setVan] = useState(null);
+    const location =useLocation();
 
+    console.log(location);
+    
   useEffect(() => {
     fetch(`/api/vans/${params.id}`)
       .then((res) => res.json())
       .then((data) => setVan(data.vans));
   }, [params.id]);
 
+  const search = location.state?.search || "";
+  const filteredType =location.state?.type || "all" ;
   return (
+    <section>
+        <Link 
+        to={`..${search}`}
+        relative="path" 
+        className="back-button">
+        &larr; <span>{`Back to ${filteredType} vans`}</span>
+      </Link>
+
         <div className="van-detail-container h-screen p-10" style={{ backgroundColor: 'hsla(33, 100%, 96%, 1)' }}>
             {van ? (
                 <div className="van-detail">
@@ -26,7 +41,9 @@ function VanDetails() {
                     </div>
                 </div>
             ) : <h2 style={{ color: 'hsla(0, 0%, 30%, 1)' }}>Loading...</h2>}
-        </div>)
+        </div>
+    </section>
+  )
 }
 
 export default VanDetails;

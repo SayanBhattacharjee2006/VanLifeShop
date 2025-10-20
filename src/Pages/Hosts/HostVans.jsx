@@ -15,7 +15,7 @@ function HostVans() {
   const hostAllVans=vans.map(van=>{
     return (
       <Link
-            to={`${van.id}`}
+            to={van.id}
             key={van.id}
             className="[color:unset] [text-decoration:unset]"
         >
